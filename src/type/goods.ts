@@ -10,7 +10,7 @@ export interface selectData {
     introduce: string;
     page: number;
     pageSize:number;
-    count: number;
+     count: number;
 }
 
 export class listData {
@@ -19,7 +19,7 @@ export class listData {
         title: "",
         introduce: "",
         page: 1,
-        pageSize: 0,
-        count: 10
+        pageSize: 10,
+        count: 0
     }
 }

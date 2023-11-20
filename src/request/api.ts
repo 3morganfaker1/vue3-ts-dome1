@@ -18,3 +18,17 @@ export function getGoodList(){
         method: 'get',
     })
 }
+
+export function getUserList(){
+    return service({
+        url:'./api/getUserList',
+        method: 'get',
+    })
+}
+
+export function getRoleList(){
+    return service({
+        url:'./api/getRoleList',
+        method: 'get',
+    })
+}
