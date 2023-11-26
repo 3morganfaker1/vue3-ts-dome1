@@ -9,21 +9,19 @@
           <el-col :span="16">
             <h2>admin server</h2>
           </el-col>
-          <el-col :span="4">
-            <span class="quit">quit</span>
+          <el-col :span="4" class="quit-btn">
+            <el-button @click="quit" >quit</el-button>
           </el-col>
         </el-row>
       </el-header>
       <el-container>
         <el-aside width="200px">
           <el-menu active-text-color="#ffd04b" background-color="#545c64" class="el-menu-vertical-demo"
-            default-active="2" text-color="#fff" router>
+            :default-active="active" text-color="#fff" router>
             <!--router开启路由模式，通过el-menu-item的 index进行跳转-->
             <el-menu-item :index="item.path" v-for="item in list" :key="item.path">
               <span>{{ item.meta.title }}</span>
             </el-menu-item>
-
-
           </el-menu>
         </el-aside>
         <!--路由出口-->
@@ -37,16 +35,21 @@
   import {
     defineComponent
   } from 'vue';
-  import { useRouter } from 'vue-router';
+  import { useRouter, useRoute } from 'vue-router';
 
   export default defineComponent({
     name: 'HomeView',
     components: {},
     setup(){
       const router = useRouter();
+      const route = useRoute();
       const list = router.getRoutes().filter(v=>v.meta.isShow); 
       console.log("list",list);
-      return {list};
+      const quit = ()=> {
+        localStorage.removeItem('token');
+        router.push('/login'); 
+      }
+      return {list,active:route.path,quit};
     }
   });
 </script>
@@ -65,6 +68,10 @@
       height: 80px;
       line-height: 80px;
       color: #fff;
+    }
+    .quit-btn {
+      height: 80px;
+      line-height: 80px;
     }
   }
   .el-aside{

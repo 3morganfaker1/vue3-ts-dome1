@@ -35,5 +35,5 @@ export class userData {
         name:'',
         role:''
     }
-    isShow! : false;
+    isShow! : boolean;
 }

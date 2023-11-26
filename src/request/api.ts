@@ -32,3 +32,10 @@ export function getRoleList(){
         method: 'get',
     })
 }
+
+export function getAuthorityList(){
+    return service({
+        url:'./api/getAuthorityList',
+        method: 'get',
+    })
+}
