@@ -13,54 +13,29 @@ const routes: Array<RouteRecordRaw> = [
         name:'goods',
         meta: {
           isShow: true,
-          title:'商品列表'
+          title:'抖音竞品迭代'
         },
-        component: () => import(/* webpackChunkName: "goods" */ '../views/GoodsView.vue')
+        component: () => import(/* webpackChunkName: "goods" */ '../views/DouyinIteration.vue')
       },
       {
         path:'user',
         name:'user',
         meta: {
           isShow: true,
-          title:'用户列表'
+          title:'微信竞品迭代'
         },
-        component: () => import(/* webpackChunkName: "user" */ '../views/UserView.vue')
+        component: () => import(/* webpackChunkName: "user" */ '../views/WeixinIteration.vue')
       },
       {
         path:'role',
         name:'role',
         meta: {
           isShow: true,
-          title:'角色列表'
+          title:'竞品差异对比'
         },
-        component: () => import(/* webpackChunkName: "role" */ '../views/RoleView.vue')
-      },
-      {
-        path:'authority',
-        name:'authority',
-        meta: {
-          isShow: false,
-          title:'权限列表'
-        },
-        component: () => import(/* webpackChunkName: "authority" */ '../views/AuthorityView.vue')
+        component: () => import(/* webpackChunkName: "role" */ '../views/DiffResult.vue')
       }
     ]
-  },
-  {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  },
-  {
-    path: '/login',
-    name: 'login',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/LoginView.vue')
   }
 ]
 
@@ -68,13 +43,13 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
 })
-router.beforeEach((to,from,next)=>{
-  const token: string| null = localStorage.getItem('token');
-  if(!token && to.path !== '/login'){
-    next('/login')
-  }else{
-    next();
-  }
-})
+// router.beforeEach((to,from,next)=>{
+//   const token: string| null = localStorage.getItem('token');
+//   if(!token && to.path !== '/login'){
+//     next('/login')
+//   }else{
+//     next();
+//   }
+// })
 
 export default router
